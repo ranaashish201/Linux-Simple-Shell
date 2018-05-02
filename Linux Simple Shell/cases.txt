@@ -1,0 +1,50 @@
+
+TEST CASES : 
+	cd --->		cd dir1/dir2
+				cd /home/ashish/Downloads/code/dir1/dir2
+				cd ../..
+				cd
+				cd ~
+				cd dfaklkladfl  (this should give an error)
+				cd ~/Documents
+				cd ashish rana  (this should give an error)
+
+	echo ---->	echo hello world
+				echo -n hello world   (this should not consider the newline at end)
+				echo hello -n    (this should print hello -n)
+				echo
+				echo -n
+
+
+	history ---->	history  (will print history so far)
+					history -a (will print an error message of not finding command)
+					history -c (will clear history)
+					history -w file.txt (will copy history to this file)
+
+	pwd   ----->	pwd
+					pwd fadjk  (will work same as pwd)
+					pwd -ad  (will prompt that can't find the command)
+
+	exit    ----->	exit
+					exit dfadf (will still exit)
+
+
+	ls  ---->	ls
+				ls fdja  (will prompt an error that can't execute it)
+				ls -a
+				ls -m
+				ls -fad (will give error)
+				ls /home
+				ls /home/ashish
+
+	cat ------>		cat  (will take input from keyboard)
+					cat mkdir.c
+					cat mkdir.c shell.c
+					cat -b shell.c
+					cat -E shell.c
+					cat -bE shell.c
+					cat -Eb shell.c
+					cat dfajk  (will give error)
+
+
+

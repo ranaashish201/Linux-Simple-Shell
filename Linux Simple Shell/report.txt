@@ -1,0 +1,54 @@
+Options that shell commands can take : 
+
+1. cd command : my version of cd command can handle query to change directory to a given path (can resolve both absolute path and relative path) and it can handle cases like '~' and '../..'
+
+Assumption made : I have implemented this command using chdir system call. Also i have assumed that only single argument will be provided to command without spaces and that is command.
+
+Errors handled and corner cases in cd :  Any invalid path given will be dealt with an error message. Also i have handled the case of '~' in the path name and also the case when only cd is typed without giving any path to it.  (path containing '~' in it and not giving path at all are corner cases)
+
+2.echo command : my version of echo command will print the exact output as given by user. 
+the options which i implemented '-n'.
+
+Assumption made : Assuming that user will give input to echo without any newline character and i have not handled escape characters.
+
+Errors handled in echo : just print anything thrown to echo command.
+
+3. history command : my version of history command will store the history in a file named history.txt which is in same directory as the main code and have handled the case that if someone delete the history.txt file then just create it again (but data will be lost then). it is implemented via writing to file everything user input.
+Options handled are : '-c' and '-w' ('-c' will reset the history file and '-w' will take a filename as argument and will store history in that file).
+
+Assumption made : asssuming someone won't delete the history file from  directory and my history.txt must be in same directory from where the shell has started.
+Errors handled and corner cases : history command will give error if any wrong option is provided to it.
+
+4. pwd command : while running the program i keep track of current directory using getcwd() system call.
+Assumption made : assuming no commands are given to it.
+Errors handled : if any wrong command is given to pwd it will throw an error.
+
+5.exit command : when seeing exit just terminate the program.
+
+6.ls command  : I have made a separate program for ls whose binary will be called by my main program. In ls, i have used scandir() system call which will give me the names of all the files and folders in it.
+I have handled '-a' and '-m' command options.
+Assumptions made : assuming the binary for ls is in same directory as my main program and only the ls command is given or ls with options given are there. It will not work if a path is given to it.
+Errors handles : if any command other than the above are given then my program will throw an error message.
+
+
+7. cat command : I have implement cat command by reading files from the system when given to it. 
+I have implemented two options '-b' and '-E' in it.
+Assumptions made : assuming user will give correct names of files present in current directory.
+Errors and corner cases handled : User can give variable no. of files to concatenate and can write data to command line too if no file name given. Also if some file is not present,program will not stop concatenating other files.
+
+8.date command : I have used time.h to get time and other info regarding date  (struct tm tm = *localtime(&t))
+Options that i have implemented are : '-u' for utc time and '-r' to get last modification date and time of a file(for this i have taken help from stackoverflow).
+Assumptions made : assuming date binary is in same folder as the main program
+Errors and corner cases : any command other than those provided by me will give error
+
+9. rm command : I have used unlink() system call which will unlink the file given as path in the call.
+Options that i have implemented are '-i' and  '-f'.
+Assumptions : assuming user will enter the integer value when asked whether to delete file or not in -i command.
+Errors and corner cases : if file is not found or is linked to somewhere else than prompt with an error. writing commnad without any argument will throw a prompt
+
+10. mkdir command : I have used mkdir() system call to create the directory in which file name is given as path.
+Options that i have implemented are '-v'
+Assumptions  : any command other than i have handled might be assumed as directory name to be created.
+Errors handled : If for any reason directory can't be created then error message will be printed and writing the commnad without any argument will throw a prompt.
+
+
